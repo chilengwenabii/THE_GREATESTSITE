@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors */
+  --brand-dark-green: #064E3B;
+  --brand-emerald: #14532D;
+  --brand-sage: #365314;
+  --brand-pine: #1A5D1A;
+  --brand-forest: #166534;
+  --brand-moss: #4D7C0F;
+  --brand-bright-emerald: #16A34A;
+  --brand-deep-emerald: #15803D;
+  --brand-gold: #EAB308;
+  --brand-light-mint: #BBF7D0;
+  --brand-off-white: #F0FDF4;
+  --brand-medium-green: #22C55E;
+  --brand-light-green: #86EFAC;
+
+  /* Background Hierarchy */
+  --background-main: #0A2F1C;
+  --background-content: rgba(20, 83, 45, 0.95);
+  --background-header: #064E3B;
+  --background-overlay: #134E4A;
+  --background-modal: #14532D;
+
+  /* Text Colors */
+  --text-primary: #F0FDF4;
+  --text-secondary: rgba(187, 247, 208, 0.9);
+  --text-tertiary: #4ADE80;
+  --text-accent: #EAB308;
+  --text-muted: #9CA3AF;
+
+  /* Card Colors */
+  --card-work-bg: linear-gradient(to bottom, #365314, #1E3A0F);
+  --card-team-bg: radial-gradient(circle, #1A5D1A, #0F3A0F);
+  --card-border: rgba(77, 124, 15, 0.4);
+  --card-hover: #4D7C0F;
+  --card-selected: #EAB308;
+
+  /* Shadows */
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-header: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+@theme inline {
+  --color-background: var(--background-main);
+  --color-foreground: var(--text-primary);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Inconsolata, "Roboto Mono", "Source Code Pro", "Liberation Mono", Menlo, Consolas, "DejaVu Sans Mono", "Courier New", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes vibeGlow {
+  0% { text-shadow: 0 0 5px rgba(255,255,255,0.5), 0 0 10px #00ff99; }
+  50% { text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffcc; }
+  100% { text-shadow: 0 0 5px rgba(255,255,255,0.5), 0 0 10px #00ff99; }
+}
+.vibe {
+  animation: vibeGlow 2s infinite ease-in-out;
+}
+
+@keyframes goldPremium {
+  0% { text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700; transform: scale(1); color: #ffd700; }
+  50% { text-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700, 0 0 60px #ffd700; transform: scale(1.2); color: #ffed4e; }
+  100% { text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700; transform: scale(1); color: #ffd700; }
+}
+.gold-premium {
+  animation: goldPremium 1.5s infinite ease-in-out;
+}
