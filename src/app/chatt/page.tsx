@@ -49,7 +49,7 @@ export default function ChattPage() {
     }
 
     // Fetch user data
-    fetch('http://localhost:8000/users/me', {
+    fetch('https://the-greatest-backend-site-1.onrender.com/users/me', {
       headers: {
         'Authorization': `Bearer ${token}`
       }

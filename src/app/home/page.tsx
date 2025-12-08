@@ -34,7 +34,7 @@ export default function HomePage() {
     }
 
     // Fetch user data
-    fetch('http://localhost:8000/users/me', {
+    fetch('https://the-greatest-backend-site-1.onrender.com/users/me', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -47,7 +47,7 @@ export default function HomePage() {
     .catch(err => console.error('Error fetching user:', err));
 
     // Fetch projects
-    fetch('http://localhost:8000/projects/', {
+    fetch('https://the-greatest-backend-site-1.onrender.com/projects/', {
       headers: {
         'Authorization': `Bearer ${token}`
       }

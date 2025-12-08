@@ -12,7 +12,7 @@ export async function PUT(request: NextRequest) {
     const body = await request.json();
 
     // Forward the request to the backend
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:8000';
+    const backendUrl = process.env.BACKEND_URL || 'https://the-greatest-backend-site-1.onrender.com';
     const response = await fetch(`${backendUrl}/users/me`, {
       method: 'PUT',
       headers: {
