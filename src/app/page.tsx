@@ -6,10 +6,17 @@ import { OrbitControls, Stage } from '@react-three/drei';
 import { Suspense, useRef, useState } from 'react';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { useLoader } from '@react-three/fiber';
+import { Mesh } from 'three';
 import { Eye, EyeOff } from 'lucide-react';
 
 function Model3D() {
   const gltf = useLoader(GLTFLoader, '/models/model.glb');
+  gltf.scene.traverse((child) => {
+    if ((child as Mesh).isMesh) {
+      (child as Mesh).castShadow = true;
+      (child as Mesh).receiveShadow = true;
+    }
+  });
   return <primitive object={gltf.scene} scale={1} />;
 }
 
@@ -125,15 +132,17 @@ export default function LoginPage() {
         {/* 3D model preview - Middle on small screens */}
         <div className="w-full sm:w-1/2 flex items-center justify-center p-2 sm:p-4 order-2 sm:order-2">
           <div className="w-full h-64 sm:h-96 bg-gray-800 rounded-lg shadow-md">
-            <Canvas camera={{ position: [0, 1, 3] }}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[0, 5, 5]} intensity={1} />
+            <Canvas camera={{ position: [0, 0, 5], fov: 50 }} shadows style={{ touchAction: 'none' }}>
+              <ambientLight intensity={0.6} />
+              <directionalLight position={[5, 5, 5]} intensity={1.5} castShadow shadow-mapSize-width={2048} shadow-mapSize-height={2048} />
+              <directionalLight position={[-5, 5, 5]} intensity={0.8} />
+              <pointLight position={[0, 10, 0]} intensity={0.5} />
               <Suspense fallback={null}>
-                <Stage>
+                <Stage shadowsEnabled>
                   <Model3D />
                 </Stage>
               </Suspense>
-              <OrbitControls enablePan={false} enableZoom={true} />
+              <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} enableDamping={false} autoRotate={true} autoRotateSpeed={0.5} />
             </Canvas>
           </div>
         </div>
@@ -154,10 +163,10 @@ export default function LoginPage() {
       </div>
 
       {/* Centered Login Card - Only on large screens */}
-      <div className="hidden sm:flex justify-center items-center absolute inset-0">
+      <div className="hidden sm:flex justify-center items-center absolute inset-0 pointer-events-none">
         <form
           onSubmit={handleLogin}
-          className="bg-white p-8 rounded-lg shadow-lg flex flex-col w-96"
+          className="bg-white p-8 rounded-lg shadow-lg flex flex-col w-96 pointer-events-auto"
         >
           <h2 className="text-2xl font-bold text-green-700 mb-6 text-center">
             Login
