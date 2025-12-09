@@ -14,17 +14,17 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const username = (document.querySelector('input[type="text"]') as HTMLInputElement)?.value;
+    const emailOrUsername = (document.querySelector('input[type="text"]') as HTMLInputElement)?.value;
     const password = (document.querySelector('input[type="password"]') as HTMLInputElement)?.value;
 
     try {
       const response = await fetch('https://the-greatest-backend-site-1.onrender.com/auth/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify({
-          username: username || '',
+        body: new URLSearchParams({
+          email: emailOrUsername || '',
           password: password || '',
         }),
       });
@@ -33,7 +33,7 @@ export default function LoginPage() {
         const data = await response.json();
         localStorage.setItem('token', data.access_token);
         // For demo purposes, store user info (in real app, fetch from /users/me endpoint)
-        localStorage.setItem('user', JSON.stringify({ id: 1, username: username, full_name: 'User', email: '' }));
+        localStorage.setItem('user', JSON.stringify({ id: 1, username: emailOrUsername, full_name: 'User', email: emailOrUsername }));
         setErrorMessage(''); // Clear any previous error
         router.push('/home');
       } else {
