@@ -112,7 +112,7 @@ export default function LoginPage() {
         )}
         <button
           type="submit"
-          className="bg-green-500 text-white p-2 rounded hover:bg-green-600 transition"
+          className="bg-green-500 text-white p-2 rounded hover:bg-green-600 transition cursor-pointer"
         >
           Login
         </button>
