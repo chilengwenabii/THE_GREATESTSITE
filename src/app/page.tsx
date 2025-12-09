@@ -21,9 +21,9 @@ export default function LoginPage() {
       const response = await fetch('https://the-greatest-backend-site-1.onrender.com/auth/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
-        body: new URLSearchParams({
+        body: JSON.stringify({
           username: username || '',
           password: password || '',
         }),
@@ -45,7 +45,7 @@ export default function LoginPage() {
       }
     } catch (error) {
       console.error('Login error:', error);
-      setErrorMessage('Unable to connect to the server. Please check your internet connection.');
+      setErrorMessage('backend not yet connected');
     }
   };
 
