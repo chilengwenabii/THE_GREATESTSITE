@@ -21,9 +21,9 @@ export default function LoginPage() {
       const response = await fetch('https://the-greatest-backend-site-1.onrender.com/auth/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
-        body: new URLSearchParams({
+        body: JSON.stringify({
           email: emailOrUsername || '',
           password: password || '',
         }),
