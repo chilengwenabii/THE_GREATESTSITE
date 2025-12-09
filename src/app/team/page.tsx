@@ -97,7 +97,7 @@ const teamMembers: TeamMember[] = [
   {
     id: '11',
     fullName: 'Davis Bubelwa',
-    roles: ['Machine Learning Engineer', 'Full Stack Developer'],
+    roles: ['Machine Learning Engineer', 'Animator'],
     skills: ['Machine Learning', 'Full Stack Development', 'Python', 'AI'],
     projectsCompleted: ['ML Prediction Model', 'AI Dashboard'],
     dateJoined: '2023-11-25'

@@ -34,7 +34,7 @@ export default function HomePage() {
     }
 
     // Fetch user data
-    fetch('https://the-greatest-backend-site-1.onrender.com/users/me', {
+    fetch('http://localhost:8000/users/me', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
