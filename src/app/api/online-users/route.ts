@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Forward the request to the backend
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:8000';
+    const backendUrl = process.env.BACKEND_URL || 'https://the-greatest-backend-site-1.onrender.com';
     const response = await fetch(`${backendUrl}/users/online-count`, {
       headers: {
         'Authorization': `Bearer ${token}`,
