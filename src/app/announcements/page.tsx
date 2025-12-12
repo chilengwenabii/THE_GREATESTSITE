@@ -14,7 +14,7 @@ interface Announcement {
   };
 }
 
-export default function AnnouncementsPage() {
+export default function Announcements() {
   const router = useRouter();
   const [announcementText, setAnnouncementText] = useState('');
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
