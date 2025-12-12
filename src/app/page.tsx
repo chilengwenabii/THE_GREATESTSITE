@@ -14,7 +14,7 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const emailOrUsername = (document.querySelector('input[type="text"]') as HTMLInputElement)?.value;
+    const username = (document.querySelector('input[type="text"]') as HTMLInputElement)?.value;
     const password = (document.querySelector('input[type="password"]') as HTMLInputElement)?.value;
 
     try {
@@ -24,7 +24,7 @@ export default function LoginPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: emailOrUsername || '',
+          username: username || '',
           password: password || '',
         }),
       });
@@ -33,7 +33,7 @@ export default function LoginPage() {
         const data = await response.json();
         localStorage.setItem('token', data.access_token);
         // For demo purposes, store user info (in real app, fetch from /users/me endpoint)
-        localStorage.setItem('user', JSON.stringify({ id: 1, username: emailOrUsername, full_name: 'User', email: emailOrUsername }));
+        localStorage.setItem('user', JSON.stringify({ id: 1, username: username, full_name: 'User', email: '' }));
         setErrorMessage(''); // Clear any previous error
         router.push('/home');
       } else {
